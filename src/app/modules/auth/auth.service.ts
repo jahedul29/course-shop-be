@@ -12,6 +12,9 @@ import { AuthUtils } from './auth.utils';
 const register = async (payload: User): Promise<User | null> => {
   payload.password = await UserUtils.hashPassword(payload.password);
 
+  const userId = await AuthUtils.generateUserId(payload.role);
+  payload.userId = userId;
+
   const result = await prisma.user.create({
     data: payload,
   });
