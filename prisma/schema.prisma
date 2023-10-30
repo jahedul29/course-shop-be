@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String   @id @default(uuid())
+  userId   String   @unique
+  name     String
+  email    String   @unique
+  password String
+  role     UserRole
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  enrollments Enrollment[]
+
+  @@map("users")
+}
+
+model Course {
+  id               String                  @id @default(uuid())
+  name             String
+  instructor       String
+  description      String?
+  enrollmentStatus EnrollmentStatusOptions @default(OPEN)
+  thumbnail        String?
+  duration         String
+  schedule         String
+  location         LocationOptions
+  prerequisites    String[]
+  syllabus         Json[]
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  enrollments Enrollment[]
+
+  @@map("courses")
+}
+
+model Enrollment {
+  id String @id @default(uuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("enrollments")
+}
+
+enum LocationOptions {
+  ONLINE
+  ONSITE
+}
+
+enum EnrollmentStatusOptions {
+  OPEN
+  CLOSED
+  INPROGRESS
+}
+
+enum UserRole {
+  ADMIN
+  STUDENT
+}

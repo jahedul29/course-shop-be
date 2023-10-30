@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "F:\\job-application\\internshala\\Alemeno\\10-30-2023\\course-shop-be\\logs\\winston\\successes\\.b1772110c25e15d57c3fd549589717c0d7b729ff-audit.json",
+    "files": [
+        {
+            "date": 1698689962482,
+            "name": "F:\\job-application\\internshala\\Alemeno\\10-30-2023\\course-shop-be\\logs\\winston\\successes\\cs-2023-30-10-19-success.log",
+            "hash": "bd7d111669dfab8fedb7d5251cf7afe0b70e967a9b9e6bb3f947e9a472266186"
+        }
+    ],
+    "hashType": "sha256"
+}
