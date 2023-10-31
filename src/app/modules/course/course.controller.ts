@@ -48,8 +48,37 @@ const findOne = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const updateOne = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const courseData = req.body;
+
+  const result = await CourseService.updateOne(id, courseData);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Course updated successfully',
+    data: result,
+  });
+});
+
+const deleteOne = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  const result = await CourseService.deleteOne(id);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Course deleted successfully',
+    data: result,
+  });
+});
+
 export const CourseController = {
   create,
   findAll,
   findOne,
+  updateOne,
+  deleteOne,
 };

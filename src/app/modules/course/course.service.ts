@@ -98,8 +98,67 @@ const findOne = async (id: string) => {
   }
 };
 
+const updateOne = async (
+  id: string,
+  payload: Partial<Course>,
+): Promise<Course | null> => {
+  if (payload?.syllabus !== undefined) {
+    // Extract and transform the syllabus field
+    const syllabus = payload.syllabus;
+    delete payload.syllabus; // Remove syllabus from the payload
+
+    const result = await prisma.course.update({
+      where: {
+        id,
+      },
+      data: {
+        ...payload,
+        syllabus: {
+          set: syllabus,
+        },
+      },
+    });
+
+    return result;
+  } else {
+    const existingCourse = await prisma.course.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    if (!existingCourse) {
+      return null;
+    }
+
+    const result = await prisma.course.update({
+      where: {
+        id,
+      },
+      data: {
+        ...payload,
+        syllabus: existingCourse.syllabus as any,
+      },
+    });
+
+    return result;
+  }
+};
+
+const deleteOne = async (id: string): Promise<Course | null> => {
+  const result = await prisma.course.delete({
+    where: {
+      id,
+    },
+  });
+
+  return result;
+};
+
 export const CourseService = {
   create,
   findAll,
   findOne,
+  updateOne,
+  deleteOne,
 };
