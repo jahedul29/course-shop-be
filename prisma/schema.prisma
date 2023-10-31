@@ -26,15 +26,15 @@ model User {
 }
 
 model Course {
-  id               String                  @id @default(uuid())
+  id               String   @id @default(uuid())
   name             String
   instructor       String
   description      String?
-  enrollmentStatus EnrollmentStatusOptions @default(OPEN)
+  enrollmentStatus String   @default("open")
   thumbnail        String?
   duration         String
   schedule         String
-  location         LocationOptions
+  location         String   @default("online")
   prerequisites    String[]
   syllabus         Json?
 
@@ -54,29 +54,13 @@ model Enrollment {
   courseId String
   course   Course @relation(fields: [courseId], references: [id])
 
-  progress Int                            @default(0)
-  status   StudentEnrollmentStatusOptions @default(INPROGRESS)
+  progress Int    @default(0)
+  status   String @default("inprogress")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("enrollments")
-}
-
-enum StudentEnrollmentStatusOptions {
-  INPROGRESS
-  COMPLETED
-}
-
-enum LocationOptions {
-  ONLINE
-  ONSITE
-}
-
-enum EnrollmentStatusOptions {
-  OPEN
-  CLOSED
-  INPROGRESS
 }
 
 enum UserRole {
