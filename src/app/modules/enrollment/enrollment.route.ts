@@ -20,7 +20,7 @@ router.post(
 router.post(
   '/mark-course-as-complete/:courseId/:userId',
   auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.STUDENT),
-  EnrollmentController.enrollIntoCourse,
+  EnrollmentController.markCourseAsComplete,
 );
 
 export const EnrollmentRouter = router;

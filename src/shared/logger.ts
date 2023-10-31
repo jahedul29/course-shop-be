@@ -1,7 +1,5 @@
 /* eslint-disable no-undef */
-import path from 'path';
 import { createLogger, format, transports } from 'winston';
-import DailyRotateFile from 'winston-daily-rotate-file';
 const { combine, timestamp, label, printf } = format;
 
 //Customm Log Format
@@ -19,19 +17,19 @@ const logger = createLogger({
   format: combine(label({ label: 'CS' }), timestamp(), myFormat),
   transports: [
     new transports.Console(),
-    new DailyRotateFile({
-      filename: path.join(
-        process.cwd(),
-        'logs',
-        'winston',
-        'successes',
-        'cs-%DATE%-success.log'
-      ),
-      datePattern: 'YYYY-DD-MM-HH',
-      zippedArchive: true,
-      maxSize: '20m',
-      maxFiles: '14d',
-    }),
+    // new DailyRotateFile({
+    //   filename: path.join(
+    //     process.cwd(),
+    //     'logs',
+    //     'winston',
+    //     'successes',
+    //     'cs-%DATE%-success.log'
+    //   ),
+    //   datePattern: 'YYYY-DD-MM-HH',
+    //   zippedArchive: true,
+    //   maxSize: '20m',
+    //   maxFiles: '14d',
+    // }),
   ],
 });
 
@@ -40,19 +38,19 @@ const errorlogger = createLogger({
   format: combine(label({ label: 'CS' }), timestamp(), myFormat),
   transports: [
     new transports.Console(),
-    new DailyRotateFile({
-      filename: path.join(
-        process.cwd(),
-        'logs',
-        'winston',
-        'errors',
-        'cs-%DATE%-error.log'
-      ),
-      datePattern: 'YYYY-DD-MM-HH',
-      zippedArchive: true,
-      maxSize: '20m',
-      maxFiles: '14d',
-    }),
+    // new DailyRotateFile({
+    //   filename: path.join(
+    //     process.cwd(),
+    //     'logs',
+    //     'winston',
+    //     'errors',
+    //     'cs-%DATE%-error.log'
+    //   ),
+    //   datePattern: 'YYYY-DD-MM-HH',
+    //   zippedArchive: true,
+    //   maxSize: '20m',
+    //   maxFiles: '14d',
+    // }),
   ],
 });
 
