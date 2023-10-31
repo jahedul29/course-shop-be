@@ -24,19 +24,13 @@
 I used latest node version while developing the application `18.16.0` and used yarn for managing dependencies
 
 1. Clone the application
-
    ```
    git clone https://github.com/jahedul29/course-shop-be
    ```
-
 2. install required dependencies using yarn
-
    `yarn`
-
 3. Then migrate prisma
-
    `npx prisma migrate dev`
-
 4. Run the application
    `yarn dev`
 5. To check the prisma studio, run
