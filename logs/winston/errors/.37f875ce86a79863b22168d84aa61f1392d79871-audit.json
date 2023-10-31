@@ -39,6 +39,11 @@
             "date": 1698752723753,
             "name": "F:\\job-application\\internshala\\Alemeno\\10-30-2023\\course-shop-be\\logs\\winston\\errors\\cs-2023-31-10-12-error.log",
             "hash": "904d199250bfe3b02823e12cfaa28a193a51b8a3119eeb167405c09a21dfbe4a"
+        },
+        {
+            "date": 1698753852012,
+            "name": "F:\\job-application\\internshala\\Alemeno\\10-30-2023\\course-shop-be\\logs\\winston\\errors\\cs-2023-31-10-13-error.log",
+            "hash": "3e5beccdab96e5a655b376240f35f0d1b6cc23b746ec871264652e817fe4f915"
         }
     ],
     "hashType": "sha256"

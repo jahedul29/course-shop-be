@@ -1,8 +1,6 @@
-import { EnrollmentStatusOptions } from '@prisma/client';
-
 export type ICourseFilterRequest = {
   searchTerm?: string;
-  enrollmentStatus?: EnrollmentStatusOptions;
+  enrollmentStatus?: 'open' | 'closed' | 'inprogress';
   duration?: string;
   location?: string;
   instructor?: string;
