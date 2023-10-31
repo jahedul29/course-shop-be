@@ -167,10 +167,16 @@ assignment):
 **Enrollment**
 
 - /enrollments/enroll-into-course/:courseId (POST) - to enroll a user into a course
-- /enrollments (Get) - to get all the enrollments
+- /enrollments (Get) - to get all the enrollments (Admin will get all the items but student will only get the items where the logged in user enrolled in)
 - /enrollments/mark-course-as-complete/:courseId (POST) - to mark a course as complete
 
 **Auth**
 
 - /register (POST) - to register a user
 - /login (POST) - to login to the application
+
+## ERD
+
+![enter image description here](https://imgtr.ee/images/2023/10/31/b512b07fdf661aafcd61c450cfcf25bd.png)
+
+## Future Plan

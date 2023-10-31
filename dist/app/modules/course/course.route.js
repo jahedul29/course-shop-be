@@ -14,4 +14,6 @@ const router = express_1.default.Router();
 router.post('/', (0, validateRequest_1.default)(course_validation_1.CourseZodValidation.create), (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN), course_controller_1.CourseController.create);
 router.get('/', course_controller_1.CourseController.findAll);
 router.get('/:id', course_controller_1.CourseController.findOne);
+router.patch('/:id', (0, validateRequest_1.default)(course_validation_1.CourseZodValidation.update), (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN), course_controller_1.CourseController.updateOne);
+router.delete('/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN), course_controller_1.CourseController.deleteOne);
 exports.CourseRouter = router;

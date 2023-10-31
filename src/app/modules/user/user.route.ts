@@ -13,7 +13,7 @@ userRouter.patch(
   '/:id',
   validateRequest(UserZodValidation.update),
   auth(UserRole.ADMIN),
-  UserController.updateOne
+  UserController.updateOne,
 );
 userRouter.delete('/:id', auth(UserRole.ADMIN), UserController.deleteOne);
 

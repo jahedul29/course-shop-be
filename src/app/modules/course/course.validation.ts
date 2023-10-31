@@ -14,7 +14,7 @@ const create = z.object({
       [...CourseConstants.enrollmentStatusOptions] as [string, ...string[]],
       {
         required_error: 'Enrollment status is required',
-      }
+      },
     ),
     thumbnail: z.string({
       required_error: 'Thumbnail is required',
@@ -29,7 +29,7 @@ const create = z.object({
       [...CourseConstants.courseLocationOptions] as [string, ...string[]],
       {
         required_error: 'Location is required',
-      }
+      },
     ),
     prerequisites: z.array(z.string({}), {
       required_error: 'Prerequisites is required',
@@ -48,11 +48,48 @@ const create = z.object({
       }),
       {
         required_error: 'Syllabus is required',
-      }
+      },
     ),
   }),
 });
 
+const update = z.object({
+  body: z.object({
+    name: z.string().optional(), // Make 'name' optional
+    instructor: z.string().optional(), // Make 'instructor' optional
+    description: z.string().optional(), // Make 'description' optional
+    enrollmentStatus: z
+      .enum([...CourseConstants.enrollmentStatusOptions] as [
+        string,
+        ...string[],
+      ])
+      .optional(), // Make 'enrollmentStatus' optional
+    thumbnail: z.string().optional(), // Make 'thumbnail' optional
+    duration: z.string().optional(), // Make 'duration' optional
+    schedule: z.string().optional(), // Make 'schedule' optional
+    location: z
+      .enum([...CourseConstants.courseLocationOptions] as [string, ...string[]])
+      .optional(), // Make 'location' optional
+    prerequisites: z.array(z.string()).optional(), // Make 'prerequisites' optional
+    syllabus: z
+      .array(
+        z.object({
+          week: z.number({
+            required_error: 'Week is required',
+          }),
+          topic: z.string({
+            required_error: 'Topic is required',
+          }),
+          content: z.string({
+            required_error: 'Content is required',
+          }),
+        }),
+      )
+      .optional(), // Make 'syllabus' optional
+  }),
+}); // Make the entire 'body' object optional
+
 export const CourseZodValidation = {
   create,
+  update,
 };

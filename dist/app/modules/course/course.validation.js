@@ -45,6 +45,37 @@ const create = zod_1.z.object({
         }),
     }),
 });
+const update = zod_1.z.object({
+    body: zod_1.z.object({
+        name: zod_1.z.string().optional(),
+        instructor: zod_1.z.string().optional(),
+        description: zod_1.z.string().optional(),
+        enrollmentStatus: zod_1.z
+            .enum([...course_constants_1.CourseConstants.enrollmentStatusOptions])
+            .optional(),
+        thumbnail: zod_1.z.string().optional(),
+        duration: zod_1.z.string().optional(),
+        schedule: zod_1.z.string().optional(),
+        location: zod_1.z
+            .enum([...course_constants_1.CourseConstants.courseLocationOptions])
+            .optional(),
+        prerequisites: zod_1.z.array(zod_1.z.string()).optional(),
+        syllabus: zod_1.z
+            .array(zod_1.z.object({
+            week: zod_1.z.number({
+                required_error: 'Week is required',
+            }),
+            topic: zod_1.z.string({
+                required_error: 'Topic is required',
+            }),
+            content: zod_1.z.string({
+                required_error: 'Content is required',
+            }),
+        }))
+            .optional(), // Make 'syllabus' optional
+    }),
+}); // Make the entire 'body' object optional
 exports.CourseZodValidation = {
     create,
+    update,
 };

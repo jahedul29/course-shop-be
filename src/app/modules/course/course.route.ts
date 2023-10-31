@@ -17,4 +17,12 @@ router.post(
 router.get('/', CourseController.findAll);
 router.get('/:id', CourseController.findOne);
 
+router.patch(
+  '/:id',
+  validateRequest(CourseZodValidation.update),
+  auth(ENUM_USER_ROLE.ADMIN),
+  CourseController.updateOne,
+);
+router.delete('/:id', auth(ENUM_USER_ROLE.ADMIN), CourseController.deleteOne);
+
 export const CourseRouter = router;
