@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Course, Prisma } from '@prisma/client';
+import httpStatus from 'http-status';
+import ApiError from '../../../errors/ApiError';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
@@ -82,7 +84,22 @@ const findAll = async (
   };
 };
 
+const findOne = async (id: string) => {
+  const result = await prisma.course.findUnique({
+    where: {
+      id,
+    },
+  });
+
+  if (result) {
+    return result;
+  } else {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Course not found');
+  }
+};
+
 export const CourseService = {
   create,
   findAll,
+  findOne,
 };

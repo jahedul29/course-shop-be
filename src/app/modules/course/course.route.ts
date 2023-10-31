@@ -11,9 +11,10 @@ router.post(
   '/',
   validateRequest(CourseZodValidation.create),
   auth(ENUM_USER_ROLE.ADMIN),
-  CourseController.create
+  CourseController.create,
 );
 
 router.get('/', CourseController.findAll);
+router.get('/:id', CourseController.findOne);
 
 export const CourseRouter = router;
