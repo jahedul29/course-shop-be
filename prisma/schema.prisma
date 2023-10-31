@@ -36,7 +36,7 @@ model Course {
   schedule         String
   location         LocationOptions
   prerequisites    String[]
-  syllabus         Json[]
+  syllabus         Json?
 
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
@@ -54,10 +54,18 @@ model Enrollment {
   courseId String
   course   Course @relation(fields: [courseId], references: [id])
 
+  progress Int                            @default(0)
+  status   StudentEnrollmentStatusOptions @default(INPROGRESS)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("enrollments")
+}
+
+enum StudentEnrollmentStatusOptions {
+  INPROGRESS
+  COMPLETED
 }
 
 enum LocationOptions {
