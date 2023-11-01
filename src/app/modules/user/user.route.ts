@@ -8,7 +8,7 @@ import { UserZodValidation } from './user.validation';
 const userRouter = express.Router();
 
 userRouter.get('/', auth(UserRole.ADMIN), UserController.findAll);
-userRouter.get('/:id', auth(UserRole.ADMIN), UserController.findOne);
+userRouter.get('/:id', UserController.findOne);
 userRouter.patch(
   '/:id',
   validateRequest(UserZodValidation.update),
