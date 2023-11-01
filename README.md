@@ -65,4 +65,4 @@ I used latest node version while developing the application `18.16.0` and used y
 - https://course-shop-be.vercel.app/api/v1/users/:id (PATCH) - to update user (Admin)
 - https://course-shop-be.vercel.app/api/v1/users/:id (DELETE) - to delete a user (Admin)
 
-to know details please check the [analysis](https://github.com/jahedul29/course-shop-be/blob/main/analysis.md) file
+## to know details please check the [analysis](https://github.com/jahedul29/course-shop-be/blob/main/analysis.md) file
