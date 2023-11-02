@@ -37,6 +37,8 @@ I used latest node version while developing the application `18.16.0` and used y
    `npx prisma studio`
    then prisma studio can be accessible from http://localhost:5555
 
+### for env data follow .env.example
+
 ## Available Endpoints
 
 **Course**
