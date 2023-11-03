@@ -19,6 +19,10 @@
 **lint-staged** (Run linters against staged git files and don't let 💩 slip into your code base!)
 **husky** (Git hook before committing)
 
+## Documentation
+
+Postman collection documentation [https://documenter.getpostman.com/view/24625974/2s9YXe7jGb](https://documenter.getpostman.com/view/24625974/2s9YXe7jGb)
+
 ## How to run the application :
 
 I used latest node version while developing the application `18.16.0` and used yarn for managing dependencies
